@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +43,7 @@ body{
 /* LOGIN BOX */
 
 .loginBox{
- width:290px;
+  width:290px;
   padding:40px;
   background: rgba(255,255,255,0.2); 
   backdrop-filter: blur(10px); 
@@ -63,6 +62,50 @@ body{
 .hello{
   display:inline-block;
   transform:translateX(-110px);
+}
+
+.menuPage{
+  width:100%;
+  height:100vh;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  background-image:url("images/bg3.png");
+  background-size:cover;
+  background-position:center;
+}
+
+.menuPage h1{
+  color:white;
+  font-size:40px;
+}
+
+.menuPage button{
+  width:220px;
+  padding:14px;
+  font-size:18px;
+}
+
+.menubox{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:40px;
+  padding:40px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+
+  background: rgba(255,255,255,0.1);
+  border:3px solid rgb(255, 255, 255);
+  width:220px;
+  padding:14px;
+  font-size:18px;
+  border-radius:30px;
 }
 
 /* INPUT */
@@ -131,7 +174,6 @@ canvas{
 <!-- LOGIN PAGE -->
 
 <div id="loginPage" class="loginPage">
-
 <div class="loginBox">
 
 <h2 class="title">
@@ -141,12 +183,28 @@ Welcome to ECG Monitor
 
 <input id="name" placeholder="Name">
 <input id="phone" placeholder="Phone Number">
-
 <button onclick="loginUser()">Register now</button>
 
 </div>
+</div>
+
+<!---------------- MENU PAGE ---------------->
+
+<div id="menuPage" style="display:none" class="menuPage">
+
+
+
+<div class="menubox">
+
+<button onclick="goMonitor()">Start Monitoring</button>
+
+<button>Heart History</button>
+
+<button>About Heart Health</button>
 
 </div>
+</div>
+
 
 <!-- DASHBOARD -->
 
@@ -182,6 +240,8 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 
+
+
 // LOGIN
 
 window.loginUser = function(){
@@ -203,9 +263,18 @@ loginTime:new Date().toLocaleString()
 });
 
 document.getElementById("loginPage").style.display="none";
+document.getElementById("menuPage").style.display="flex";
+
+
+}
+
+// GO TO MONITOR
+window.goMonitor=function(){
+document.getElementById("menuPage").style.display="none";
 document.getElementById("dashboard").style.display="block";
 
 startMonitor();
+
 }
 
 
@@ -327,6 +396,5 @@ data.voltage.toFixed(2)+" V";
 }
 
 </script>
-
 </body>
 </html>
