@@ -18,7 +18,9 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  background: linear-gradient(135deg,#1e90ff,#4facfe);
+  background-image: url("images/bg1.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 /* LOGIN PAGE */
@@ -34,13 +36,16 @@ body{
 /* LOGIN BOX */
 
 .loginBox{
-  width:290px;
+ width:290px;
   padding:40px;
-  background:#0b2a7a;
+  background: rgba(255,255,255,0.2); /* สีขาวโปร่ง */
+  backdrop-filter: blur(10px); /* ทำให้พื้นหลังเบลอ */
+  -webkit-backdrop-filter: blur(10px); /* สำหรับ Safari */
   border-radius:20px;
   box-shadow:0 20px 40px rgba(0,0,0,0.3);
   text-align:center;
   color:white;
+  border:1px solid rgba(255,255,255,0.3); /* ขอบบางๆ */
 }
 
 .title{
