@@ -108,6 +108,36 @@ body{
   border-radius:30px;
 }
 
+/* MONITOR PAGE */
+.monitorPage{
+  width:100%;
+  height:100vh;
+  display:flex;
+
+  background-image:url("images/bg4.png");
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.monitorBox{
+  padding:40px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.2);
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  text-align:center;
+}
+
+canvas{
+  border:4px solid #3a9fec;
+  margin-top:25px;
+  width:90%;
+  max-width:700px;
+  border-radius:10px;
+}
+
 /* INPUT */
 
 input{
@@ -146,16 +176,18 @@ button:hover{
   display:flex;
   justify-content:center;
   gap:60px;
+  margin-top:20px;
 }
 
 #bpmBox{
-  font-size:90px;
+  font-size:80px;
   font-weight:bold;
+  color:#00ff9c;
 }
 
 #voltageBox{
-  font-size:40px;
-  color:red;
+  font-size:35px;
+  color:#ff4d4d;
 }
 
 canvas{
@@ -206,11 +238,12 @@ Welcome to ECG Monitor
 </div>
 
 
-<!-- DASHBOARD -->
+<!-- monitor page -->
 
-<div id="dashboard" style="display:none; text-align:center;">
+<div id="dashboard" style="display:none" class="monitorPage">
 
-<h2>ECG Monitor</h2>
+<div class="monitorBox">
+<button onclick="goMenu()">Back to Menu</button>
 
 <div id="monitorContainer">
 <div id="bpmBox">-- BPM</div>
@@ -283,10 +316,15 @@ startMonitor();
 let rawData=[];
 let labels=[];
 let lastBpm=0;
-
 let rawChart;
-
 function startMonitor(){
+
+  window.goMenu=function(){
+
+document.getElementById("dashboard").style.display="none";
+document.getElementById("menuPage").style.display="flex";
+
+}
 
 rawChart=new Chart(document.getElementById("rawChart"),{
 type:"line",
