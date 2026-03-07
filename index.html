@@ -115,23 +115,33 @@ body{
   display:flex;
 
   background-image:url("images/bg4.png");
+  background-size:cover;
+  background-position:center;
+
   flex-direction:column;
   align-items:center;
   justify-content:center;
 }
 
 .monitorBox{
-  padding:40px;
+  padding:20px;
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.2);
+  -webkit-backdrop-filter: blur(5px);
+  background: rgba(255,255,255,0.1);
   border-radius:20px;
   box-shadow:0 20px 40px rgba(0,0,0,0.3);
   text-align:center;
 }
 
+.backBtn{
+  margin-left:0;
+  margin-right:auto;
+  width:auto;
+  padding:8px 16px;
+}
+
 canvas{
-  border:4px solid #3a9fec;
+  border:4px solid #0d6cb4;
   margin-top:25px;
   width:90%;
   max-width:700px;
@@ -176,13 +186,13 @@ button:hover{
   display:flex;
   justify-content:center;
   gap:60px;
-  margin-top:20px;
+  margin-top:10px;
 }
 
 #bpmBox{
-  font-size:80px;
+  font-size:35px;
   font-weight:bold;
-  color:#00ff9c;
+  color:#2d78c4;
 }
 
 #voltageBox{
@@ -243,7 +253,7 @@ Welcome to ECG Monitor
 <div id="dashboard" style="display:none" class="monitorPage">
 
 <div class="monitorBox">
-<button onclick="goMenu()">Back to Menu</button>
+<button class="backBtn" onclick="goMenu()">Back</button>
 
 <div id="monitorContainer">
 <div id="bpmBox">-- BPM</div>
